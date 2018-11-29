@@ -1,7 +1,7 @@
 <template>
   <div
     id="chart3"
-    style="width:380px;height:300px;"
+    style="width:180px;height:180px;"
   ></div>
   </div>
 </template>
@@ -38,12 +38,12 @@ export default {
               emphasis: {
                 shadowBlur: 10,
                 shadowOffsetX: 0,
-                shadowColor: "rgba(0, 0, 0, 0.5)"
+                shadowColor: "#fff"
               }
             },
             label: {
               normal: {
-                color: "#333"
+                color: "#fff"
                 // formatter: '{b}:{c}/{d}%'
               }
             }

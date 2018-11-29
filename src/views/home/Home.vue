@@ -1,183 +1,254 @@
 <style>
-.text-con,.hot-list{
-    list-style: none;
+.home {
+  width: 1200px;
+  margin: 0 auto;
 }
-.text-con li{
-    padding: 28px;
-    border-bottom: 1px solid #ccc;
+.text-con3,
+.hot-list {
+  list-style: none;
 }
-.hot-list li{
-    line-height: 30px;
+.text-con3 li,
+.text-con1 li {
+  line-height: 30px;
+  color: #fff;
+  border-bottom: 1px dashed #ccc;
 }
-.hot-list li span{
-    width: 18px;
-    height: 18px;
-    line-height: 18px;
-    text-align: center;
+.hot-list li {
+  line-height: 30px;
+}
+.hot-list li span {
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.footer-left{
+    float: left;
+    width: 300px;
+    margin-left: 80px;
+}
+.footer-cen{
+    width: 500px;
+    float: left;
+}
+.footer-cen p{
+line-height: 50px;
+font-weight: bold;
+font-size: 20px;
+color: #00b3ff;
+}
+.footer-right{
+    padding-right: 50px;
+    float: left;
+    width: 300px;
+}
+.footer-left p,.footer-right p{
     color: #fff;
-    font-weight: bold;
-    display: inline-block;
-    margin: 0 5px;
+}
+.footer-right p{
+    text-align: right;  
+}
+.footer-right p:nth-child(2){
+    color: #06d6d3;
+    line-height: 28px;
+}
+.footer-left p:nth-child(2){
+    color: #06d6d3;
+    line-height: 28px;
 }
 </style>
 <template>
-  <div class="home">
-    <Row :gutter="20">
-      <Col span="18">
+  <div style="width:100%;">
+    <div class="home">
       <Row>
-      <Input search size="large" enter-button="搜索" placeholder="搜索线索"/>
+        <Col span="24">
+          <Row>
+            <Col span="2">
+              <span style="lineHeight:40px;color:#fff;fontWeight:bold;fontSize:20px;">线索搜索</span>
+            </Col>
+            <Col span="18">
+              <Input search size="large" style="float:left;" enter-button="搜索" placeholder="搜索线索"/>
+            </Col>
+            <Col span="3" offset="1">
+              <a style="lineHeight:40px;">刷新</a>
+            </Col>
+          </Row>
+        </Col>
+        <Col span="24" style="marginTop:10px;">
+          <Row>
+            <Col span="18">
+              <ButtonGroup>
+                <Button type="primary">全部</Button>
+                <Button type="default">危害食品安全</Button>
+                <Button type="default">危害药品安全</Button>
+                <Button type="default">损害自然资源</Button>
+                <Button type="default">损害生态环境</Button>
+                <Button type="default">违法出让国有土地使用权</Button>
+                <Button type="default">损害消费者权益</Button>
+              </ButtonGroup>
+            </Col>
+            <Col span="6">
+              <ButtonGroup>
+                <Button type="primary">最近一周</Button>
+                <Button type="default">最近一月</Button>
+                <Button type="default">最近一季度</Button>
+              </ButtonGroup>
+            </Col>
+          </Row>
+        </Col>
       </Row>
-      <Tabs value="tab2">
-          <TabPane label='信息汇总' name="tab1">
-              <Row></Row>
-                    <Card>
-                        <p slot="title">
-                        原文链接
-                        </p>
-                        <div>
-                            <div>
-                                <p style="height:38px;">
-                                    <span>时间：</span>
-                                    <Button type="dashed">近30天</Button>
-                                    <Button type="text">近7天</Button>
-                                    <Button type="text">昨天</Button>
-                                    <Button type="text">今天</Button>
-                                </p>
-                                <p style="height:38px;">
-                                    <span>情感：</span>
-                                    <Button type="dashed">全部</Button>
-                                    <Button type="text">正面</Button>
-                                    <Button type="text">中性</Button>
-                                    <Button type="text">负面</Button>
-                                </p>
-                                <p style="height:38px;">
-                                    <span>排序：</span>
-                                    <Button type="dashed">时间降序</Button>
-                                    <Button type="text">时间升序</Button>
-                                </p>
-                                <p style="height:38px;">
-                                    <span>媒体平台</span>
-                                    <Button type="dashed">全部（2352）</Button>
-                                    <Button type="text">微信（103）</Button>
-                                    <Button type="text">微博（42）</Button>
-                                    <Button type="text">网页（102）</Button>
-                                    <Button type="text">报刊（55）</Button>
-                                    <Button type="text">客户端（13）</Button>
-                                    <Button type="text">论坛（332）</Button>
-                                </p>
-                            </div>
-                            <div style="padding:0 20px;">
-                                <ul class="text-con">
-                                    <li v-for="(item,index) in aText" :key="index">
-                                        <Button ghost :type="item.type==1?'success':item.type==2?'error':'info'" style="float:left;marginLeft:-50px;marginRight:10px;" size="small">{{item.type==1?'正面':item.type==2?'负面':'中性'}}</Button>
-                                        <div>
-                                            <p style="fontSize:16px;lineHeight:34px;">{{item.title}}</p>
-                                            <p style="color:#7d7d7d">{{item.info}}</p>
-                                            <p style="lineHeight:30px;"><a>相似文章{{item.num}}</a></p>
-                                            <div><span style="float:left;">主题词：</span><span style="float:left;padding:0 10px;" v-for="(item_word,index_word) in item.word" :key="index_word">{{item_word}}</span><b style="float:right;">{{item.time}}</b></div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <Row type="flex" justify="center" :style="{marginTop:'10px'}">
-                                    <Col>
-                                    <Page :pageSize="1" :total="112" :current="1" show-total></Page>
-                                    </Col>
-                                </Row>
-                            </div>
-                        </div>
-                    </Card>
-          </TabPane>
-          <TabPane label='内容分析' name="tab2">
-              <Card>
-                <div>
-                    <div>
-                        <p style="height:38px;">
-                            <span>时间：</span>
-                            <Button type="dashed">全部</Button>
-                            <Button type="text">今天</Button>
-                            <Button type="text">昨天</Button>
-                            <Button type="text">近7天</Button>
-                            <Button type="text">近30天</Button>
-                        </p>
-                        <p style="height:38px;">
-                            <span>媒体平台</span>
-                            <Button type="dashed">全部（2352）</Button>
-                            <Button type="text">微信（103）</Button>
-                            <Button type="text">微博（42）</Button>
-                            <Button type="text">网页（102）</Button>
-                            <Button type="text">报刊（55）</Button>
-                            <Button type="text">客户端（13）</Button>
-                            <Button type="text">论坛（332）</Button>
-                        </p>
-                    </div>
-                    <Row :gutter="20">
-                        <Col span="12">
-                            <Card>
-                                <p slot="title">
-                                活跃媒体
-                                </p>
-                                <div style="padding:0 20px;">
-                                    <chart1></chart1>
-                                </div>
-                            </Card>
-                        </Col>
-                        <Col span="12">
-                            <Card>
-                                <p slot="title">
-                                媒体分布
-                                </p>
-                                <div style="padding:0 20px;">
-                                    <chart2></chart2>
-                                </div>
-                            </Card>
-                        </Col>
-                        <Col span="12" style="marginTop:10px;">
-                            <Card>
-                                <p slot="title">
-                                情感属性
-                                </p>
-                                <div style="padding:0 20px;">
-                                    <chart3></chart3>
-                                </div>
-                            </Card>
-                        </Col>
-                        <Col span="12" style="marginTop:10px;">
-                            <Card>
-                                <p slot="title">
-                                发布热区
-                                </p>
-                                <div style="padding:0 20px;">
-                                    <chart4></chart4>
-                                </div>
-                            </Card>
-                        </Col>
-                    </Row>
-                </div>
-              </Card>
-          </TabPane>
-      </Tabs>
-      </Col>
-      <Col span="6">
-      <Card>
-        <p slot="title">
-          热点关键词
-        </p>
-        <div style="padding:0 20px;">
-            <ul class="hot-list">
-                <li v-for="(item,index) in aHot" :key="index"><span :style="{background:index==0?'red':index==1?'orange':index==2?'yellow':'#4ec7fa'}">{{index}}</span>{{item}}</li>
-            </ul>
+      <Row style="marginTop:10px;">
+        <Col span="6">
+          <Card :padding="10" :style="{background:image}">
+            <p slot="title" style="color:#fff;">热点关键词</p>
+            <div>
+              <ul class="text-con3">
+                <li v-for="(item,index) in aText1" :key="index">
+                  <div>
+                    <p>
+                      <span style="padding:0 5px;">{{index+1}}</span>
+                      {{item.title}}
+                      <b style="float:right;">{{item.num}}</b>
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </Card>
+          <Card :style="{background:image,marginTop:'10px'}">
+            <p slot="title" style="color:#fff;">情感属性</p>
+            <div style="padding:0 20px;">
+              <chart3></chart3>
+            </div>
+          </Card>
+        </Col>
+        <Col span="12">
+          <div>
+            <img style="width:100%;height:100%" src="../../assets/map.png" alt>
+          </div>
+        </Col>
+        <Col span="6">
+          <Card :style="{background:image}">
+            <p slot="title" style="color:#fff;">主题词云</p>
+            <div style="padding:0 20px;height:180px;">
+              <p>主题词云</p>
+            </div>
+          </Card>
+          <Card :style="{background:image,marginTop:'10px'}">
+            <p slot="title" style="color:#fff;">媒体分布</p>
+            <div style="padding:0 20px;">
+              <chart1></chart1>
+            </div>
+          </Card>
+        </Col>
+      </Row>
+      <!-- 两个图 -->
+      <Row :gutter="10">
+        <Col span="12" style="marginTop:10px;">
+          <Card :style="{background:image}">
+            <p slot="title" style="color:#fff;">热词走势</p>
+            <div style="padding:0 20px;">
+              <!-- <chart2></chart2> -->
+              <chart6></chart6>
+            </div>
+          </Card>
+        </Col>
+        <Col span="12" style="marginTop:10px;">
+          <Card :style="{background:image}">
+            <p slot="title" style="color:#fff;">情感走势</p>
+            <div style="padding:0 20px;">
+              <!-- <chart4></chart4> -->
+              <chart5></chart5>
+            </div>
+          </Card>
+        </Col>
+      </Row>
+      <!-- 最后一行 -->
+      <Row :gutter="10">
+        <Col span="8" style="marginTop:10px;">
+          <Card :style="{background:image}">
+            <p slot="title" style="color:#fff;">预警信息</p>
+            <a slot="extra">查看更多</a>
+            <div style="padding:0 20px;">
+              <ul class="text-con1">
+                <li v-for="(item,index) in aText2" :key="index">
+                  <div>
+                    <p>
+                      {{item.title}}
+                      <span style="float:right;">{{item.time}}</span>
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </Card>
+        </Col>
+        <Col span="8" style="marginTop:10px;">
+          <Card :style="{background:image}">
+            <p slot="title" style="color:#fff;">敏感信息</p>
+            <a slot="extra">查看更多</a>
+            <div style="padding:0 20px;">
+              <ul class="text-con1">
+                <li v-for="(item,index) in aText3" :key="index">
+                  <div>
+                    <p>
+                      {{item.title}}
+                      <span style="float:right;">{{item.time}}</span>
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </Card>
+        </Col>
+        <Col span="8" style="marginTop:10px;">
+          <Card :style="{background:image}">
+            <p slot="title" style="color:#fff;">行政处罚书</p>
+            <a slot="extra">查看更多</a>
+            <div style="padding:0 20px;">
+              <ul class="text-con1">
+                <li v-for="(item,index) in aText4" :key="index">
+                  <div>
+                    <p>
+                      {{item.title}}
+                      <span style="float:right;">{{item.time}}</span>
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </Card>
+        </Col>
+        <Col span="24" :style="{background:imgFot,height:'50px',marginTop:'10px'}">
+        <div class="footer-left">
+            <p>当前时间</p>
+            <p>2018年 11月 29 日  23:32:59</p>
         </div>
-      </Card>
-      </Col>
-    </Row>
+        <div class="footer-cen">
+            <p>Beijing Blitech Technology CO., LTD @ Copyright</p>
+        </div>
+        <div class="footer-right">
+            <p>当前大厅</p>
+            <p>昆明市人民检察院·智慧侦监分析平台</p>
+        </div>
+        </Col>
+      </Row>
+    </div>
   </div>
 </template>
 
 <script>
-import chart1 from './components/chart1.vue';
-import chart2 from './components/chart2.vue';
-import chart3 from './components/chart3.vue';
-import chart4 from './components/chart4.vue';
+import chart1 from "./components/chart1.vue";
+import chart2 from "./components/chart2.vue";
+import chart3 from "./components/chart3.vue";
+import chart4 from "./components/chart4.vue";
+import chart5 from "./components/chart5.vue";
+import chart6 from "./components/chart6.vue";
 export default {
   name: "home",
   components: {
@@ -185,67 +256,140 @@ export default {
     chart2,
     chart3,
     chart4,
+    chart5,
+    chart6
   },
   data() {
     return {
-        // 文章
-        aText:[
-            {   
-                type:1,
-                title:'受得了副科级数量单价了解到酸辣粉',
-                info:'杀戮空间氛围较为软件老司机，数量及辅导老师缴费基数',
-                num:88,
-                word:[
-                    'sld','23432','sdfsd'
-                ],
-                time:'2018年10月09日'
-            },
-            {   
-                type:2,
-                title:'受得了副科级数量单价了解到酸辣粉',
-                info:'杀戮空间氛围较为软件老司机，数量及辅导老师缴费基数',
-                num:88,
-                word:[
-                    'sld','23432','sdfsd'
-                ],
-                time:'2018年10月09日'
-            },
-            {   
-                type:3,
-                title:'受得了副科级数量单价了解到酸辣粉',
-                info:'杀戮空间氛围较为软件老司机，数量及辅导老师缴费基数',
-                num:88,
-                word:[
-                    'sld','23432','sdfsd'
-                ],
-                time:'2018年10月09日'
-            },
-            {   
-                type:1,
-                title:'受得了副科级数量单价了解到酸辣粉',
-                info:'杀戮空间氛围较为软件老司机，数量及辅导老师缴费基数',
-                num:88,
-                word:[
-                    'sld','23432','sdfsd'
-                ],
-                time:'2018年10月09日'
-            },
-        ],
+    image:"url(" + require("../../assets/bg.png") + ")",
+    imgFot:"url(" + require("../../assets/footer.png") + ")",
+      // 文章
+      aText1: [
+        {
+          title: "受得了副科单价了解到酸辣粉",
+          num: 88
+        },
+        {
+          title: "受得了副科级了解到酸辣粉",
+          num: 88
+        },
+        {
+          title: "受得了副科级数量单辣粉",
+          num: 33
+        },
+        {
+          title: "受得了副科了解到酸辣粉",
+          num: 88
+        },
+        {
+          title: "受得了副量单价了解到酸辣粉",
+          num: 356
+        },
+        {
+          title: "受得了副量单价了解到酸辣粉",
+          num: 88
+        },
+        {
+          title: "受得了副量单价了解到酸辣粉",
+          num: 88
+        }
+      ],
+      // 文章
+      aText2: [
+        {
+          title: "受得了副科单价了解到酸辣粉",
+          time: "2018-11-29"
+        },
+        {
+          title: "受得了副科级了解到酸辣粉",
+          time: "2018-11-29"
+        },
+        {
+          title: "受得了副科级数量单辣粉",
+          time: "2018-11-29"
+        },
+        {
+          title: "受得了副科了解到酸辣粉",
+          time: "2018-11-29"
+        },
+        {
+          title: "受得了副量单价了解到酸辣粉",
+          time: "2018-11-29"
+        },
+        {
+          title: "受得了副量单价了解到酸辣粉",
+          time: "2018-11-29"
+        }
+      ],
+      // 文章
+      aText3: [
+        {
+          title: "受得了副科单价了解到酸辣粉",
+          time: "2018-11-29"
+        },
+        {
+          title: "受得了副科级了解到酸辣粉",
+          time: "2018-11-29"
+        },
+        {
+          title: "受得了副科级数量单辣粉",
+          time: "2018-11-29"
+        },
+        {
+          title: "受得了副科了解到酸辣粉",
+          time: "2018-11-29"
+        },
+        {
+          title: "受得了副量单价了解到酸辣粉",
+          time: "2018-11-29"
+        },
+        {
+          title: "受得了副量单价了解到酸辣粉",
+          time: "2018-11-29"
+        }
+      ],
+      // 文章
+      aText4: [
+        {
+          title: "受得了副科单价了解到酸辣粉",
+          time: "2018-11-29"
+        },
+        {
+          title: "受得了副科级了解到酸辣粉",
+          time: "2018-11-29"
+        },
+        {
+          title: "受得了副科级数量单辣粉",
+          time: "2018-11-29"
+        },
+        {
+          title: "受得了副科了解到酸辣粉",
+          time: "2018-11-29"
+        },
+        {
+          title: "受得了副量单价了解到酸辣粉",
+          time: "2018-11-29"
+        },
+        {
+          title: "受得了副量单价了解到酸辣粉",
+          time: "2018-11-29"
+        }
+      ],
       // 热点list
       aHot: [
-          '老师的街坊邻居',
-          '老师的街坊邻居',
-          '老师的街坊邻居',
-          '杀戮空间发了打法',
-          '老师的街坊邻居',
-          '是非窝太晚日2522',
-          '老师的街坊邻居',
-          '外套43感受到感受到',
-          '  说的房',
-          '老师的街坊邻居',
-          '撒地方撒的说的sd',
-          '老师的街坊邻居',
-          ' 色任务玩日无日峰人事',
+        "老师的街坊邻居",
+        "老师的街坊邻居",
+        "老师的街坊邻居",
+        "杀戮空间发了打法",
+        "老师的街坊邻居",
+        "是非窝太晚日2522",
+        "老师的街坊邻居",
+        "外套43感受到感受到",
+        "  说的房",
+        "老师的街坊邻居",
+        "撒地方撒的说的sd",
+        "老师的街坊邻居",
+        " 色任务玩日无日峰人事"
       ]
     };
   },

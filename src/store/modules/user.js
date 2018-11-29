@@ -27,18 +27,19 @@ const user = {
         // 获取用户信息
         checkLogin(state) {
             axios
-                .get(API.user.login + Cookies.get('345345345'))
+                .get('http://123.56.14.124:918/post/?format=json')
                 .then(res => {
-                    let objData = res.data;
-                    if (objData.status_code == 1000) {
-                        state.commit('getUserInfo', objData.data);
-                    } else if (objData.status_code == 401) {
-                        Message.error('无权访问！');
-                        location.href = location.origin + '/limit.html';
-                    } else {
-                        Message.error(objData.message);
-                        state.commit('toSSO');
-                    }
+                    console.log(11,res)
+                    // let objData = res.data;
+                    // if (objData.status_code == 1000) {
+                    //     state.commit('getUserInfo', objData.data);
+                    // } else if (objData.status_code == 401) {
+                    //     Message.error('无权访问！');
+                    //     location.href = location.origin + '/limit.html';
+                    // } else {
+                    //     Message.error(objData.message);
+                    //     state.commit('toSSO');
+                    // }
                 })
                 .catch(error => {
                     state.commit('toSSO');

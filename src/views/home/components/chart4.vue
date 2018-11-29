@@ -1,5 +1,5 @@
 <template>
-  <div id="chart4" style="width:380px;height:300px;"></div>
+  <div id="chart4" style="width:500px;height:200px;"></div>
   </div>
 </template>
 <script>
@@ -21,7 +21,7 @@ export default {
           axisPointer: {
             type: "cross",
             crossStyle: {
-              color: "#999"
+              color: "#fff"
             }
           }
         },

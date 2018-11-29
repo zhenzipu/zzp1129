@@ -13,8 +13,20 @@ const routers = [
         children: [
             {
                 path: '/main',
-                name: 'home',
+                name: 'main',
                 component: () => import('@/views/home/Home.vue')
+            },
+        ]
+    },
+    {
+        path: '/search',
+        name: 'search',
+        component: Main,
+        children: [
+            {
+                path: '/search',
+                name: 'search',
+                component: () => import('@/views/search/Home.vue')
             },
         ]
     },

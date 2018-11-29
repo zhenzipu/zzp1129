@@ -6,8 +6,8 @@ module.exports = {
         https: false,
         hotOnly: false,
         proxy: {
-            '/budget': {
-                target: 'http://api.dev.budget.tco.jd.com/',
+            '/post': {
+                target: 'http://123.56.14.124:918/',
                 changeOrigin: true
             }
         }, // string | Object

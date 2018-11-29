@@ -14,10 +14,10 @@
 <template>
     <div class="layout">
         <Layout>
-            <Header>
+            <!-- <Header> -->
                 <menu-header :userName="userName" :menu-theme="theme" :menu-list="menuList" :open-names="openNames" @on-change="handleChange"></menu-header>
-            </Header>
-            <Content :style="{padding: '20px 50px',width:'1200px',margin:'0 auto'}">
+            <!-- </Header> -->
+            <Content :style="{padding: '20px 0',margin:'0 auto',background:image,width:'100%'}">
                 <!-- <Breadcrumb :style="{margin: '20px 0'}">
                     <BreadcrumbItem>Home</BreadcrumbItem>
                     <BreadcrumbItem>Components</BreadcrumbItem>
@@ -25,7 +25,7 @@
                 </Breadcrumb> -->
                 <router-view></router-view>
             </Content>
-            <Footer class="layout-footer-center">2018-2019 &copy; JDCloud</Footer>
+            <!-- <Footer class="layout-footer-center">2018-2019 &copy; JDCloud</Footer> -->
         </Layout>
     </div>
 </template>
@@ -37,11 +37,12 @@ export default {
     },
     data() {
         return {
+        image:"url(" + require("../assets/bg.png") + ")",
             userName: 'test',
             theme: 'dark',
             menuList: [
                 {
-                    name: '主菜单',
+                    name: '主菜单1',
                     icon: 'ios-paper',
                     children: [
                         {
@@ -52,7 +53,7 @@ export default {
                     ]
                 },
                 {
-                    name: '主菜单',
+                    name: '主菜单2',
                     icon: 'ios-paper',
                     children: [
                         {
@@ -63,7 +64,7 @@ export default {
                     ]
                 },
                 {
-                    name: '主菜单',
+                    name: '主菜单3',
                     icon: 'ios-paper',
                     children: [
                         {
@@ -74,7 +75,7 @@ export default {
                     ]
                 },
                 {
-                    name: '主菜单',
+                    name: '主菜单4',
                     icon: 'ios-paper',
                     children: [
                         {
