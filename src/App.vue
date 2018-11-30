@@ -13,7 +13,7 @@ export default {
     },
     created() {
         // 验证用户信息
-        this.$store.dispatch('checkLogin');
+        // this.$store.dispatch('checkLogin');
     },
     mounted() {},
     beforeDestroy() {},
