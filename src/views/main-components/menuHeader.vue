@@ -35,33 +35,43 @@
   list-style: none;
 }
 .menu-con ul li {
-    text-align: center;
+  height: 70px;
+  text-align: center;
+  margin-top: 4px;
   cursor: pointer;
-  line-height: 60px;
+  line-height: 56px;
   color: #fff;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 15px;
   width: 120px;
   float: left;
-  border-bottom: 1px solid #8fb6d1;
+  /* border-bottom: 1px solid #8fb6d1; */
 }
-.menu-con ul li:active {
+.menu-con ul li a {
+  color: #ccc;
+}
+
+.menu-con ul li a:active {
   color: #fff;
 }
-.tabbg_con{
-    position: relative;
+.menu-con ul li a:hover {
+  color: #fff;
 }
-.tabbg_l,.tabbg_r{
-    position: absolute;
-    top:0;
-    width: 60px;
-    height: 60px;
+.tabbg_con {
+  position: relative;
 }
-.tabbg_l{
-    left: -60px;
+.tabbg_l,
+.tabbg_r {
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 60px;
 }
-.tabbg_r{
-    right: -60px;
+.tabbg_l {
+  left: -60px;
+}
+.tabbg_r {
+  right: -60px;
 }
 </style>
 
@@ -76,16 +86,19 @@
     </div>
     <div class="menu-con">
       <ul>
-        <li>
-          <router-link to="/main">
-               首页
-           <!-- <div class="tabbg_con"> -->
-               <!-- <span class="tabbg_l" :style="{background:img_left}"></span>
-               <span class="tabbg_r" :style="{background:img_right}"></span> -->
+        <li
+          :style="{background:pageName=='main'?img_act:'',backgroundSize:pageName=='main'?'100% 90%':''}"
+        >
+          <router-link to="/main">首页
+            <!-- <div class="tabbg_con"> -->
+            <!-- <span class="tabbg_l" :style="{background:img_left}"></span>
+            <span class="tabbg_r" :style="{background:img_right}"></span>-->
             <!-- </div> -->
           </router-link>
         </li>
-        <li>
+        <li
+          :style="{background:pageName=='search'?img_act:'',backgroundSize:pageName=='search'?'100% 90%':''}"
+        >
           <router-link to="/search">线索搜索</router-link>
         </li>
         <li>
@@ -106,36 +119,6 @@
         icon="ios-person"
       />
     </div>
-    <!-- <Menu mode="horizontal" theme="dark" active-name="home" @on-select="changeMenu">
-            <div class="layout-logo">
-                <img src="../../assets/jd-logo-white.png" alt="">
-            </div>
-            <template class="layout-nav" v-for="item in menuList">
-                <MenuItem v-if="item.children.length<=1" :name="item.children[0].name" :key="'menuitem' + item.name">
-                <Icon  :size="iconSize" :key="'menuicon' + item.name"></Icon>
-                {{ item.children[0].title}}
-                </MenuItem>
-                <Submenu v-if="item.children.length > 1" :name="item.name" :key="item.name">
-                    <template slot="title">
-                        <Icon :type="item.icon" :size="iconSize"></Icon>
-                        <span class="layout-text">{{item.name}}</span>
-                    </template>
-                    <template v-for="child in item.children">
-                        <MenuItem :name="child.name" :key="'menuitem' + child.name">
-                        <Icon :type="child.icon" :size="iconSize" :key="'icon' + child.name"></Icon>
-                        <span class="layout-text" :key="'title' + child.name">{{ child.title }}</span>
-                        </MenuItem>
-                    </template>
-                </Submenu>
-            </template>
-            <div style="float:right; width:100px; height:80px; color:#fff;fontSize:10px;">
-                    <div style="float:left;marginTop:11px;">
-                        <p style="lineHeight:18px;">您好，</p>
-                        <p style="lineHeight:18px;">王检察官</p>
-                    </div>
-                    <Avatar style="background-color: aqua;float:right;marginTop:12px;" icon="ios-person" />
-            </div>
-    </Menu>-->
   </div>
 </template>
 
@@ -157,9 +140,15 @@ export default {
   data() {
     return {
       image: "url(" + require("../../assets/hd_bg.png") + ")",
+      img_act: "url(" + require("../../assets/menu_bg.png") + ") no-repeat",
       img_left: "url(" + require("../../assets/left.jpg") + ")",
       img_right: "url(" + require("../../assets/right.jpg") + ")"
     };
+  },
+  computed: {
+    pageName() {
+      return this.$route.name;
+    }
   },
   methods: {
     changeMenu(active) {
@@ -175,6 +164,9 @@ export default {
         this.$store.dispatch("userLoginout");
       }
     }
+  },
+  mounted() {
+    console.log(this.$route.name);
   },
   updated() {
     this.$nextTick(() => {

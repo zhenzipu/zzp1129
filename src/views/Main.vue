@@ -58,8 +58,8 @@ export default {
                     children: [
                         {
                             title: '线索搜索',
-                            path: '/home',
-                            name: 'home',
+                            path: '/search',
+                            name: 'search',
                         },
                     ]
                 },
@@ -69,8 +69,8 @@ export default {
                     children: [
                         {
                             title: '线索日报',
-                            path: '/home',
-                            name: 'home',
+                            path: '/board',
+                            name: 'board',
                         },
                     ]
                 },
@@ -80,8 +80,8 @@ export default {
                     children: [
                         {
                             title: '监控大屏',
-                            path: '/home',
-                            name: 'home',
+                            path: '/monitor',
+                            name: 'monitor',
                         },
                     ]
                 },

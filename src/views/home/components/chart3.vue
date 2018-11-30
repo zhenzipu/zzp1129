@@ -1,9 +1,8 @@
 <template>
   <div
     id="chart3"
-    style="width:180px;height:180px;"
+    style="width:266px;height:180px;"
   ></div>
-  </div>
 </template>
 <script>
 import echarts from "echarts";
@@ -30,9 +29,15 @@ export default {
             type: "pie",
             radius: ["50%", "70%"],
             data: [
-              { value: 400, name: "中性" },
-              { value: 335, name: "正面" },
-              { value: 310, name: "负面" }
+              { value: 400, name: "中性",itemStyle:{
+                  color:'#00b3ff'
+              }},
+              { value: 335, name: "正面",itemStyle:{
+                  color:'#01e452'
+              } },
+              { value: 310, name: "负面",itemStyle:{
+                  color:'#fcdd0c'
+              } }
             ],
             itemStyle: {
               emphasis: {

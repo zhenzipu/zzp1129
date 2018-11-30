@@ -1,6 +1,5 @@
 <template>
   <div id="chart4" style="width:500px;height:200px;"></div>
-  </div>
 </template>
 <script>
 import echarts from "echarts";
@@ -24,6 +23,9 @@ export default {
               color: "#fff"
             }
           }
+        },
+         textStyle: {
+          color: "rgba(255, 255, 255)"
         },
             xAxis: {
                 type: 'category',
